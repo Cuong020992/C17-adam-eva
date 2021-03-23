@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="show1"></p>
+<button type="button" onclick="eatApple()">Ăn táo</button>
+<p id='show2'></p>
+</body>
+</html>
+<script>
+    class Apple{
+        weight;
+
+        constructor(weightApple) {
+            this.weight = weightApple;
+        }
+
+        decrease(){
+            this.weight--;
+        }
+
+        isEmpty(){
+            if (this.weight>0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        getWeight(){
+            return this.weight;
+        }
+    }
+
+    class Human{
+        name;
+        gender;
+        weightH;
+
+        constructor(name,gender,weightH) {
+            this.name = name;
+            this.gender = gender;
+            this.weightH = weightH;
+        }
+
+        isMale(){
+            if(this.gender == 'male'){
+                return this.gender = true;
+            }
+
+            if(this.gender == 'female'){
+                return this.gender = false;
+            }
+        }
+
+        // checkApple(check){
+        //    return  check.getWeight();
+        // }
+
+        eat(apple){
+               if (apple.isEmpty()){
+               this.weightH++;
+               apple.decrease();
+           }
+        }
+
+        say(){
+            if(this.gender == 'male'){
+                console.log(this.name+': Chào gái');
+                console.log(this.name+': Tên anh là Adam');
+                console.log(this.name+': Giống đực rựa');
+                console.log(this.name+': Cân nặng chuẩn men là 70 kg');
+            }
+            else {console.log(this.name+': Hello man!');
+            console.log(this.name+': Tên chụy là Eva');
+            console.log(this.name+': Gái nhật nè :)))');
+            console.log(this.name+': Cân nặng là 50kg');
+            }
+        }
+
+        getName(){
+            return this.name;
+        }
+
+        getWeightH(){
+            return this.weightH;
+        }
+    }
+
+    var adam = new Human('Adam','male',70);
+    var eva = new Human('Eva','female',50);
+    var apple = new Apple(10);
+    document.write('Khối lượng quả táo: '+apple.getWeight())
+    adam.say();
+    eva.say();
+    function eatApple(){
+        adam.eat(apple);
+        document.getElementById('show1').innerHTML = 'Trọng lượng ' +adam.getName() +' là '+ adam.getWeightH();
+        adam
+        document.getElementById('show2').innerHTML = 'Khối lượng quả táo còn: '+ apple.getWeight();
+        if(apple.isEmpty() == false){
+            alert('ăn hết rồi');
+        }
+    }
+
+</script>
